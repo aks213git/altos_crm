@@ -1,0 +1,148 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<style>
+    :root {
+        --hcolor:#176B87;
+        --tcolor:#002f3f;
+        --btn-color:#86B6F6;
+        --h-font: "Salsa", sans-serif;
+        --pfont-family: "Kalam", cursive;
+      
+      
+      }
+      
+      .navbar{
+          background-color: #EEF5FF;
+        }
+        .navbar-brand{
+          font-size:x-large;
+        }
+      
+        body{
+          background-color:#dde6f3;
+        }
+        
+        .text-crm{
+        color: var(--hcolor);
+      } 
+      .btn{
+        background-color: var(--hcolor);
+      }
+        
+        .features h3 {
+          font-family: "Salsa", sans-serif;
+          font-weight: 700;
+          font-style:oblique;
+          color: rgb(57, 57, 148);
+          font-size:2rem;
+        }
+        #features h1 {
+          font-family: var(--h-font);
+          font-weight: bolder;
+          font-style: oblique;
+          font-size:3rem;
+          color:var(--hcolor);
+        
+        }
+        
+        #features h2 {
+          font-family: var(--h-font);
+          color: var(--hcolor);
+          font-weight: 600;
+          font-size: 2rem;
+          font-style:italic;
+          
+        }
+        #features p{
+          font-family: var(--h-font);
+      
+        }
+</style>
+
+
+<div class="features pt-5  row-cols-md-1 col-md-12 bg-white  " id="features">
+    <h1 class="text-center text-decoration-underline">Features</h1>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex justify-content-center align-items-center p-4 order-md-1 order-2">
+          <div class="text-center">
+            <h2>Analytics And Reporting</h2>
+            <p>Generate comprehensive reports and analytics on sales performance, customer behavior, and trends to make
+              data-driven decisions and optimize strategies.</p>
+            <a href="home1.html#f1" class="btn btn-primary rounded-pill mt-3">More <i class="fa fa-arrow-right"
+                aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="col-md-6 order-md-2 order-1">
+          <img src="https://github.com/aks213git/crm_landing/blob/master/images/Data%20analysis1.gif?raw=true" alt="..."
+            class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-1 order-1">
+          <img src="https://github.com/aks213git/crm_landing/blob/master/images/lead%20management.gif?raw=true"
+            alt="..." class="img-fluid">
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center p-4 order-md-2 order-2">
+          <div class="text-center">
+            <h2>Lead Management</h2>
+            <p>Track and manage leads throughout the sales pipeline, from initial contact to conversion, ensuring timely
+              follow-ups and nurturing.</p>
+            <a href="home1.html#f2" class="btn btn-primary rounded-pill mt-3">More <i class="fa fa-arrow-right"
+                aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex justify-content-center align-items-center p-4 order-md-1 order-2">
+          <div class="text-center">
+            <h2>User Profile Interface</h2>
+            <p>A customizable dashboard where users view and manage their personal information, preferences, activity
+              history, and settings within a CRM system, fostering personalized interactions and streamlined user
+              experiences.</p>
+            <a href="home1.html#f3" class="btn btn-primary rounded-pill mt-3">More <i class="fa fa-arrow-right"
+                aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="col-md-6 order-md-2 order-1">
+          <img src="https://github.com/aks213git/crm_landing/blob/master/images/User%20Profile.gif?raw=true" alt="..."
+            class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-1 order-1">
+          <img src="https://github.com/aks213git/crm_landing/blob/master/images/Contact%20management.gif?raw=true"
+            alt="..." class="img-fluid">
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center p-4 order-md-2 order-2">
+          <div class="text-center">
+            <h2>Contact Management</h2>
+            <p>Centralized database to store and organize customer information, interactions, and preferences for
+              effective communication and relationship building.</p>
+            <a href="home1.html#f4" class="btn btn-primary rounded-pill mt-3">More <i class="fa fa-arrow-right"
+                aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {% endblock %}

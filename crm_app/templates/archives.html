@@ -1,0 +1,176 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    :root {
+        --hcolor:#176B87;
+        --tcolor:#002f3f;
+        --btn-color:#86B6F6;
+        --h-font: "Salsa", sans-serif;
+        --pfont-family: "Kalam", cursive;
+      
+      
+      }
+    .navbar {
+      background-color: #d8e9ff;
+    }
+    body{
+        background-color: #EEF5FF;
+    }
+    .arch_div {
+      background-color: #EEF5FF;
+      padding-bottom: 1rem;
+      width: 100%;
+    }
+  
+    .arch_div h1 {
+      font-family: var(--h-font);
+      font-weight: 700;
+      font-style: oblique;
+      color: var(--hcolor);
+      font-size: 2rem;
+      text-decoration: underline;
+    }
+  
+    .arch_div p {
+      font-family: var(--h-font);
+      font-weight: 500;
+  
+    }
+  
+    .arch_text {
+      height: auto;
+    }
+  
+    .arch_box {
+      padding: 1rem;
+    }
+  
+  
+    .arch_container {
+      width: auto;
+      border-radius: 1rem;
+      background-color: #EEF5FF;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    @media (max-width: 800px) {
+      .arch_container {
+        flex-direction: column;
+      }
+    }
+  
+  
+  
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      list-style-type: none;
+      background: #d8e9ff;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      margin-bottom: 0.2rem;
+      margin-left: 1vh;
+      margin-right: 1vh;
+    }
+  
+  
+    .item .details {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      background-color: #ffffff;
+      border-radius: 0.2rem;
+      transition: all 0.3s ease-in;
+      position: relative; 
+    }
+  
+    .unarchive-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem; 
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
+  
+    .archive-item {
+      display: none;
+    }
+  
+  
+  
+    .item:hover .item_dropdown {
+      opacity: 1;
+    }
+  
+  
+  
+    .item.dragging {
+      opacity: 1;
+    }
+  
+    .arch_logo {
+      padding: 2vh 4vh;
+    }
+  
+    .eye-icon {
+      font-size: .5em;
+      cursor: pointer;
+      text-align: end;
+    }
+    
+</style>
+
+<div class="container align-items-middle my-5" style="height: 60vh;">
+    <h1 class="text-center">Archives</h1>
+    <div class="row d-flex justify-content-center mt-4">
+        <div class="col-md-4">
+            <div class="card-body p-4 rounded w-100" style="background-color: #ffffff;">
+                <h5 class="card-title text-center mb-3">Archived Items</h5>
+                <ul id="archivedItems" class="list-group" style="background-color: #d8e9ff;">
+                    <!-- Display archived items -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const archivedItemsList = document.getElementById('archivedItems');
+
+        const archivedItems = JSON.parse(localStorage.getItem('archivedItems')) || [];
+
+        archivedItems.forEach(itemHTML => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('list-group-item');
+            listItem.innerHTML = itemHTML;
+
+            const unarchiveBtn = document.createElement('button');
+            unarchiveBtn.classList.add('btn', 'btn-primary', 'unarchive-btn');
+            unarchiveBtn.textContent = 'Unarchive';
+            unarchiveBtn.addEventListener('click', function() {
+                const index = archivedItems.indexOf(itemHTML);
+                archivedItems.splice(index, 1);
+                localStorage.setItem('archivedItems', JSON.stringify(archivedItems));
+                listItem.remove();
+            });
+
+            listItem.querySelector('.details').appendChild(unarchiveBtn);
+
+            archivedItemsList.appendChild(listItem);
+        });
+    });
+</script>
+
+{% endblock %}

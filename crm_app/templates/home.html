@@ -1,0 +1,820 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<style>
+    
+:root {
+    --hcolor:#176B87;
+    --tcolor:#002f3f;
+    --btn-color:#86B6F6;
+    --h-font: "Salsa", sans-serif;
+    --p-font: "Kalam", cursive;
+  
+  
+  }
+  .nav-link .active a {
+    color: #176B87;
+  }
+  
+  
+  .btn{
+    background-color: var(--hcolor);
+  }
+  .navbar {
+    background-color: #EEF5FF;
+  }
+  
+  .navbar-brand {
+    font-size: x-large;
+  }
+  
+  
+  /* -----------------------------------------------------hero1 */
+  .hero1 {
+    background-color: #EEF5FF;
+    margin-bottom: 0;
+  }
+  
+  .hero1 .txt1 {
+    font-family: var(--h-font);
+    font-weight: 700;
+    font-style: oblique;
+    color:var(--hcolor);
+    font-size: 4rem;
+  }
+  
+  .hero1 .txt2 {
+    font-family: var(--h-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  
+  
+  
+  /* --------------------------------------------------------div2 */
+  
+  .div2 {
+    background-color: #f6f8fb;
+    margin-top: 0;
+  }
+  
+  .div2 h2 {
+    font-family: var(--h-font);
+    font-weight: 700;
+    font-style: oblique;
+    color: var(--hcolor);
+    font-size: 2rem;
+    text-decoration: underline;
+  }
+  
+  .div2 p {
+    font-family: var(--h-font);
+    font-weight:500;
+  
+  }
+  
+  .main {
+    background-color: #B4D4FF;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  /* -------------------------------------------------------------drag_div */
+  
+  
+  
+  
+  
+  .arch_div {
+    background-color: #EEF5FF;
+    padding-bottom: 1rem;
+    width: 100%;
+  }
+  
+  .arch_div h2 {
+    font-family: var(--h-font);
+    font-weight: 700;
+    font-style: oblique;
+    color: var(--hcolor);
+    font-size: 2rem;
+    text-decoration: underline;
+  }
+  
+  .arch_div p {
+    font-family: var(--h-font);
+    font-weight: 500;
+  
+  }
+  
+  .arch_text {
+    height: auto;
+  }
+  
+  .arch_box {
+    padding: 1rem;
+  }
+  
+  
+  .arch_container {
+    width: auto;
+    border-radius: 1rem;
+    background-color: #EEF5FF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 800px) {
+    .arch_container {
+      flex-direction: column;
+    }
+  }
+  
+  
+  
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    list-style-type: none;
+    background: #d8e9ff;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    margin-bottom: 0.2rem;
+    margin-left: 1vh;
+    margin-right: 1vh;
+  }
+  
+  
+  .item .details {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 0.2rem;
+    transition: all 0.3s ease-in;
+  }
+  
+  
+  
+  .span1 {
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .span2 {
+    font-weight: normal;
+  }
+  
+  .item_dropdown {
+    position: absolute;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+  }
+  .item_dropdown  .btn{
+    background-color: #ffffff00;
+  }
+  
+  .unarchive-item {
+    display: none;
+  }
+  
+  .item:hover .item_dropdown {
+    opacity: 1;
+  }
+  
+  .item:hover .unarchive-btn {
+    opacity: 1;
+  }
+  
+  
+  .item.dragging {
+    opacity: 1;
+  }
+  
+  .arch_logo {
+    padding: 2vh 4vh;
+  }
+  
+  .eye-icon {
+    color: black;
+    font-size: .5em;
+    cursor: pointer;
+    text-align: end;
+  }
+  
+  .fa-eye {
+    color: black;
+  }
+  
+
+  
+  
+  /* ----------------------------------------------------------ss_div */
+  .ss_div {
+    background-color: #B4D4FF;
+  }
+  
+  
+  .ss_div h1 {
+    font-family: var(--h-font);
+    font-weight: 700;
+    font-style: oblique;
+    color: var(--hcolor);
+    font-size: 2.5rem;
+    text-decoration: underline;
+    padding: 1rem 0;
+  }
+  
+  .ss_container {
+    display: none;
+  }
+  
+  .ss_active {
+    display: block !important;
+  }
+  
+  .ss_heading {
+    cursor: pointer;
+    padding: 0.8vh;
+    border-radius: 0.8vh;
+    font-family: var(--h-font);
+  
+  }
+  
+  .ss_container {
+    padding: 1rem;
+  }
+  
+  .ss_container h2 {
+    padding: 2rem;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: var(--tcolor);
+  }
+  
+  .ss_container p {
+    font-family: var(--h-font);
+    font-weight:500;
+  
+  }
+  
+  .ss_container img {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+  }
+  
+  .ss_headings .ss_active {
+    color: var(--hcolor);
+    border-radius: 5px;
+    transition: color 3s ease;
+    text-decoration: underline;
+  }
+  
+  .ss_headings .ss_heading:hover {
+    background-color: lightblue;
+    transition: background-color 0.5s ease;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  /* -----------------------------------------------------gallery_div */
+  .gallery_div {
+    background-color: #EEF5FF;
+  }
+  
+  .gallery_div h1 {
+    font-family: var(--h-font);
+    color: var(--hcolor);
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .gallery-image {
+    background-color: #EEF5FF;
+  }
+  
+  
+  .heading {
+    text-align: center;
+    font-size: 2.0em;
+    letter-spacing: 1px;
+    padding: 40px;
+    color: white;
+  }
+  
+  .gallery-image {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .gallery-image img {
+    height: 250px;
+    width: 350px;
+    transform: scale(1.0);
+    transition: transform 0.4s ease;
+  }
+  
+  .img-box {
+    box-sizing: content-box;
+    margin: 15px;
+    height: 250px;
+    width: 350px;
+    overflow: hidden;
+    display: inline-block;
+    color: white;
+    position: relative;
+    background-color: white;
+  }
+  
+  .caption {
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    opacity: 0.0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .transparent-box {
+    height: 250px;
+    width: 350px;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease;
+  }
+  
+  .img-box:hover img {
+    transform: scale(1.1);
+  }
+  
+  .img-box:hover .transparent-box {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .img-box:hover .caption {
+    transform: translateY(-20px);
+    opacity: 1.0;
+  }
+  
+  .img-box:hover {
+    cursor: pointer;
+  }
+  
+  .caption>p:nth-child(2) {
+    font-size: 0.8em;
+  }
+  
+  .opacity-low {
+    opacity: 0.5;
+  }
+  
+  
+  .drag_box {
+      border: 2px dashed #000;
+      min-height: 50px;
+      margin-top: 20px;
+  }
+  .unarchive-btn{
+      display: none;
+  }
+</style>
+
+
+
+<div class="container-fluid ">
+    <div class="row row-cols-1 row-cols-md-2 hero1 py-5">
+      <div class="col text-center d-flex flex-column justify-content-center">
+        <h1 class="text-fluid ms-1 txt1">Sales teams from good to great</h1>
+        <h4 class="ms-1 mt-3 txt2">Altos CRM is the true customer-centric tool for your sales needs. Track leads, get
+          accurate
+          forecasts, and focus on what matters: closing opportunities.</h4>
+        <div class="ms-1 mt-4">
+          <a class="btn btn-primary" href="#" role="button">Start now - it's free</a>
+          <a class="btn bg-white" href="#" role="button">Schedule a demo</a>
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center">
+        <img src="/static/images/img1.png" class="img-fluid" alt="Image">
+      </div>
+    </div>
+  </div>
+
+  <div class="div2 pt-4">
+    <h2 class="text-center">Pipeline at a glance</h2>
+    <p class="text-center mt-3 ">Each opportunity is listed as a card with all the essential information; and each stage
+      gives an overview of your expected revenues.</p>
+    <div class="p-4 pt-2  text-center rounded-4">
+      <img src="/static/images/crmdashboard1.png" alt=""
+        class="p-2 bg-white rounded-5 img-fluid w-75">
+    </div>
+  </div>
+
+
+
+  <!-- drag_div -->
+  <div class="arch_div  px-5 ">
+
+    <h2 class="text-center py-3">Archiving cards</h2>
+    <div class="container ">
+      <div class="arch_container bg-light  col-md-12  rounded">
+
+        <div class="arch_box col-md-4  ">
+          <div class="d-flex justify-content-between">
+
+            <h4 class="text-right" id="item-h">New </h4>
+            <a href="archives.html"></a>
+          </div>
+          <li class="item">
+            <div class="details" draggable="true">
+              <i class="arch_logo fa-regular fa-user"></i>
+              <span class="span1">Ethan Ramirez
+                <br>
+                <span class="span2">
+                  $200
+                </span>
+              </span>
+            </div>          
+            <button class="unarchive-btn btn" style="display: none;">Unarchive</button>  
+          </li>
+
+          <li class="item">
+            <div class="details" draggable="true">
+              <i class="arch_logo fa-regular fa-user"></i>
+              <span class="span1">Emily Chang
+                <br>
+                <span class="span2">
+                  $300
+                </span>
+              </span>
+            </div>
+            <button class="unarchive-btn btn" style="display: none;">Unarchive</button>  
+            
+          </li>
+
+        </div>
+
+        <div class="arch_box col-md-4 ">
+          <div class="d-flex justify-content-between">
+
+            <h4 class="text-right">Qualified </h4>
+            <a href="archives.html"></a>
+          </div>
+
+          <li class="item">
+            <div class="details" draggable="true">
+              <i class="arch_logo fa-regular fa-user"></i>
+              <span class="span1">Marcus Rodriguez
+                <br>
+                <span class="span2">
+                  $800
+                </span>
+              </span>
+            </div>
+            <button class="unarchive-btn btn" style="display: none;">Unarchive</button>  
+            
+          </li>
+          <li class="item">
+            <div class="details" draggable="true">
+              <i class="arch_logo fa-regular fa-user"></i>
+              <span class="span1">Xavier Wilson
+                <br>
+                <span class="span2">
+                  $600
+                </span>
+              </span>
+            </div>
+            <button class="unarchive-btn btn" style="display: none;">Unarchive</button>  
+            
+          </li>
+          <li class="item">
+            <div class="details" draggable="true">
+              <i class="arch_logo fa-regular fa-user"></i>
+              <span class="span1">Noah Thompson
+                <br>
+                <span class="span2">
+                  $700
+                </span>
+              </span>
+            </div>
+            <button class="unarchive-btn btn" style="display: none;">Unarchive</button>  
+            
+          </li>
+
+        </div>
+
+        <div class="arch_box col-md-4 ">
+
+          <div class="d-flex justify-content-between">
+
+            <h4 class="text-right">Won </h4>
+            <a href="archives.html"></a>
+          </div>
+
+          <li class="item">
+            <div class="details" draggable="true">
+              <i class="arch_logo fa-regular fa-user"></i>
+              <span class="span1">Jasmine Patel
+                <br>
+                <span class="span2">
+                  $1000
+                </span>
+              </span>
+            </div>
+            <button class="unarchive-btn btn" style="display: none;">Unarchive</button>  
+            
+          </li>
+          <li class="item">
+            <div class="details" draggable="true">
+              <i class="arch_logo fa-regular fa-user"></i>
+              <span class="span1">Arjun Ram
+                <br>
+                <span class="span2">
+                  $1400
+                </span>
+              </span>
+            </div>
+            <button class="unarchive-btn btn" style="display: none;">Unarchive</button>  
+            
+          </li>
+          <li class="item">
+            <div class="details" draggable="true">
+              <i class="arch_logo fa-regular fa-user"></i>
+              <span class="span1">Jeff Keller
+                <br>
+                <span class="span2">
+                  $1500
+                </span>
+              </span>
+            </div>
+            <button class="unarchive-btn btn" style="display: none;">Unarchive</button>  
+            
+          </li>
+
+        </div>
+        
+    </div>
+    <!-- drag_box -->
+    <div class="drag_box col-md-2 mx-auto p-3 bg-danger rounded-2 text-center" style="display: none;">
+        <p>Drop here!</p>
+    </div>  
+    </div>
+</div>
+
+
+
+
+  <div class="ss_div mt-0 bg-light ">
+
+    <h1 class="text-center">Central aspects of ALTOS CRM</h1>
+
+    <div class="ss_headings d-flex justify-content-evenly">
+      <h2 class="ss_heading ss_active">Customer Service</h2>
+      <h2 class="ss_heading">Sales Automation</h2>
+      <h2 class="ss_heading">Customer Decision Hub</h2>
+    </div>
+
+
+    <div class="ss_containers text-center bg-light ">
+
+      <div class="ss_active ss_container  ">
+        <div class="row align-items-center">
+          <div class="p col  ">
+            <h2>Customer Service</h2>
+            <p>
+              Simplify service with the power of unified AI and automation.
+            </p>
+            <a href="#" class="btn btn-primary rounded-pill mt-3">Explore <i class="fa fa-arrow-right"
+                aria-hidden="true"></i></a>
+          </div>
+          <div class="img col">
+            <img src="/static/images/customer_service.png" alt=".." class="img-fluid w-100">
+          </div>
+        </div>
+      </div>
+
+      <div class="ss_container  ">
+        <div class="row align-items-center">
+          <div class="p col">
+            <h2>Sales Automation</h2>
+            <p>
+              Use AI to sell smarter and take team performance to the next level.
+            </p>
+            <a href="#" class="btn btn-primary rounded-pill mt-3">Explore <i class="fa fa-arrow-right"
+                aria-hidden="true"></i></a>
+          </div>
+          <div class="img col">
+            <img src="/static/images/sales_automation.png" alt=".." class="img-fluid w-100">
+          </div>
+        </div>
+      </div>
+
+      <div class="ss_container  ">
+        <div class="row align-items-center">
+          <div class="p col">
+            <h2>Customer Decision Hub</h2>
+            <p>
+              Deepen relationships and maximize value at every moment, everywhere – with industry
+              leading real-time decisioning and next best action.
+            </p>
+            <a href="#" class="btn btn-primary rounded-pill mt-3">Explore <i class="fa fa-arrow-right"
+                aria-hidden="true"></i></a>
+          </div>
+          <div class="img col">
+            <img src="/static/images/customer_decision_hub.png" alt=".." class="img-fluid w-100">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- gallery_div -->
+
+  <div class="gallery_div">
+    <h1 class="text-center pt-4">Visual Portfolio</h1>
+    <div class="gallery-image">
+      <div class="img-box rounded">
+        <img
+          src="https://img.freepik.com/free-photo/worker-with-laptop-three-applications_1134-309.jpg?size=626&ext=jpg&uid=R137223656&ga=GA1.1.909010635.1706957125&semt=ais"
+          alt="..." />
+        <div class="transparent-box">
+          <div class="caption">
+            <p>Contact Management Interface</p>
+            <p class="opacity-low">Interface</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="img-box rounded">
+        <img
+          src="https://img.freepik.com/free-photo/people-working-call-center_23-2149288161.jpg?size=626&ext=jpg&uid=R137223656&ga=GA1.1.909010635.1706957125&semt=ais"
+          alt="..." />
+        <div class="transparent-box">
+          <div class="caption">
+            <p>Customer Support System</p>
+            <p class="opacity-low">Helpdesk</p>
+          </div>
+        </div>
+      </div>
+      <div class="img-box rounded">
+        <img
+          src="https://img.freepik.com/free-photo/close-up-tablet-papers-with-data-charts-desk-used-by-workmates-business-development-corporate-colleagues-working-project-presentation-management-marketing-strategy_482257-32053.jpg?size=626&ext=jpg&uid=R137223656&ga=GA1.1.909010635.1706957125&semt=ais"
+          alt="..." />
+        <div class="transparent-box">
+          <div class="caption">
+            <p>Lead Tracking Dashboard</p>
+            <p class="opacity-low">Pipeline</p>
+          </div>
+        </div>
+      </div>
+      <div class="img-box rounded">
+        <img
+          src="https://img.freepik.com/free-photo/representation-user-experience-interface-design_23-2150169863.jpg?size=626&ext=jpg&uid=R137223656&ga=GA1.1.909010635.1706957125&semt=ais"
+          alt="..." />
+        <div class="transparent-box">
+          <div class="caption">
+            <p>Mobile CRM Application</p>
+            <p class="opacity-low">App</p>
+          </div>
+        </div>
+      </div>
+      <div class="img-box rounded">
+        <img
+          src="https://img.freepik.com/free-photo/standard-quality-control-concept-m_23-2150041850.jpg?size=626&ext=jpg&uid=R137223656&ga=GA1.1.909010635.1706957125&semt=ais"
+          alt="..." />
+        <div class="transparent-box">
+          <div class="caption">
+            <p>Sales Automation Workflow</p>
+            <p class="opacity-low">Streamlining</p>
+          </div>
+        </div>
+      </div>
+      <div class="img-box rounded">
+        <img
+          src="https://img.freepik.com/free-photo/online-video-calling-profile-interface_53876-123964.jpg?w=740&t=st=1707673417~exp=1707674017~hmac=41f5a2004c26ff2caeed1f9ed466be130b275f96cb67959afd5b33b2865e6866"
+          alt="..." />
+        <div class="transparent-box">
+          <div class="caption">
+            <p>User Profile Management</p>
+            <p class="opacity-low">Profile Management</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dragBox = document.querySelector('.drag_box');
+
+        const items = document.querySelectorAll('.item');
+        items.forEach(item => {
+            item.addEventListener('dragstart', dragStart);
+        });
+
+        dragBox.addEventListener('dragover', dragOver);
+
+        dragBox.addEventListener('drop', drop);
+    });
+
+    function dragStart(event) {
+        event.currentTarget.classList.add('dragging');
+        
+        const dragBox = document.querySelector('.drag_box');
+        dragBox.style.display = 'block';
+    }
+
+    function dragOver(event) {
+        event.preventDefault();
+    }
+
+    function drop(event) {
+        event.preventDefault();
+
+        const draggedItem = document.querySelector('.dragging');
+
+        let archivedItems = JSON.parse(localStorage.getItem('archivedItems')) || [];
+
+        archivedItems.push(draggedItem.outerHTML);
+
+        localStorage.setItem('archivedItems', JSON.stringify(archivedItems));
+
+        draggedItem.remove();
+
+        const dragBox = document.querySelector('.drag_box');
+        dragBox.style.display = 'none';
+    }
+
+  
+  // ss_container
+  
+  
+    const headings = document.querySelectorAll('.ss_heading');
+    const containers = document.querySelectorAll('.ss_container');
+  
+    headings[0].classList.add('ss_active');
+    containers[0].classList.add('ss_active');
+  
+    headings.forEach((heading, index) => {
+      heading.addEventListener('click', () => {
+        headings.forEach(heading => {
+          heading.classList.remove('ss_active');
+        });
+        containers.forEach(container => {
+          container.classList.remove('ss_active');
+        });
+  
+        heading.classList.add('ss_active');
+        containers[index].classList.add('ss_active');
+      });
+    });
+  
+  
+    function showContainer(index) {
+      const headings = document.querySelectorAll('.ss_heading');
+      const containers = document.querySelectorAll('.ss_container');
+  
+      headings.forEach((heading, i) => {
+        if (i === index) {
+          heading.classList.add('ss_active');
+          containers[i].classList.add('ss_active');
+        } else {
+          heading.classList.remove('ss_active');
+          containers[i].classList.remove('ss_active');
+        }
+      });
+    }
+</script>
+
+{% endblock %}
